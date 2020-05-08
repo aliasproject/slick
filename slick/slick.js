@@ -313,6 +313,16 @@
                 targetLeft = Math.ceil(targetLeft);
 
                 if (_.options.vertical === false) {
+                     /*
+                     ** FIX FOR AP SLIDER
+                     */
+                    if (_.$slider.attr('data-dir') === 'next') {
+                        targetLeft = targetLeft + parseInt(_.$slider.attr('data-offset'));
+                    } else {
+                        targetLeft = targetLeft - parseInt(_.$slider.attr('data-offset'));
+                    }
+                    /* END */
+                     
                     animProps[_.animType] = 'translate3d(' + targetLeft + 'px, 0px, 0px)';
                 } else {
                     animProps[_.animType] = 'translate3d(0px,' + targetLeft + 'px, 0px)';
